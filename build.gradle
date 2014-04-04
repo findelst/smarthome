@@ -1,0 +1,43 @@
+buildscript {
+    repositories {
+        maven {
+            url "http://repo.spring.io/libs-milestone"
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.0.0.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+repositories {
+    mavenCentral()
+    maven { url "http://repo.spring.io/libs-snapshot" }
+}
+
+dependencies {
+
+    compile 'org.springframework:spring-context:4.0.3.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter:1.0.0.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-web:1.0.0.RELEASE'
+    compile 'org.springframework.data:spring-data-jpa:1.5.1.RELEASE'
+    compile 'org.springframework:spring-orm:4.0.3.RELEASE'
+    compile 'org.hibernate:hibernate-core:4.3.5.Final'
+    compile 'org.hibernate:hibernate-entitymanager:4.3.5.Final'
+    compile 'mysql:mysql-connector-java:5.1.30'
+    compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.3.2'
+    compile 'org.thymeleaf:thymeleaf-spring4:2.1.2.RELEASE'
+    compile 'org.jsoup:jsoup:1.7.3'
+    compile 'org.aspectj:aspectjtools:1.7.4'
+
+    testCompile 'junit:junit:4.11'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+}

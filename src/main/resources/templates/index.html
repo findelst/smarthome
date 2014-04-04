@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>SmartHome</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"/>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+
+        <div class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">SmartHome</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <!--<ul class="nav navbar-nav">-->
+                        <!--<li class="active"><a href="#">Link</a></li>-->
+                        <!--<li><a href="#">Link</a></li>-->
+                        <!--<li><a href="#">Link</a></li>-->
+                        <!--<li class="dropdown">-->
+                            <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>-->
+                            <!--<ul class="dropdown-menu">-->
+                                <!--<li><a href="#">Action</a></li>-->
+                                <!--<li><a href="#">Another action</a></li>-->
+                                <!--<li><a href="#">Something else here</a></li>-->
+                                <!--<li class="divider"></li>-->
+                                <!--<li class="dropdown-header">Nav header</li>-->
+                                <!--<li><a href="#">Separated link</a></li>-->
+                                <!--<li><a href="#">One more separated link</a></li>-->
+                            <!--</ul>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                    <!--<ul class="nav navbar-nav navbar-right">-->
+                        <!--<li class="active"><a href="./">Default</a></li>-->
+                        <!--<li><a href="../navbar-static-top/">Static top</a></li>-->
+                        <!--<li><a href="../navbar-fixed-top/">Fixed top</a></li>-->
+                    <!--</ul>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="conteiner-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Сводка погоды</div>
+                        <div class="panel-body">
+                            <div data-th-each="weather : ${weathers}">
+                                <div>Температура: <span th:text="${weather.temperature}"/> °C</div>
+                                <div>Влажность: <span th:text="${weather.humidity}"/> %</div>
+                                <div>Давление: <span th:text="${weather.pressure}"/> мм</div>
+                                <div>Скорость ветра: <span th:text="${weather.windSpeed}"/> м/с</div>
+                                <div>Погода: <span th:text="${weather.weatherType}"/></div>
+                            </div>
+                            <hr/>
+                            <div class=" text-right">
+                                <a href="http://pogoda.yandex.ru/volgograd/?ncrnd=7846" target="_blank">Прогноз на неделю</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Баланс сотовых телефонов</div>
+                        <div class="panel-body">
+                            <div data-th-each="phoneBalance : ${phoneBalances}">
+                                <div>
+                                    +7<span th:text="${phoneBalance.phoneNumber}"/> : <span th:text="${phoneBalance.balance}"/> руб.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Ближайшие дни рождения</div>
+                        <div class="panel-body">
+                            <div data-th-each="birthday : ${birthdayList}">
+                                <div>
+                                    <span th:text="${birthday.title}"/><br/>
+                                    <small th:text="${birthday.date}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Новости Христианского Мира</div>
+                        <div class="panel-body">
+                            <div data-th-each="oneNews : ${news}">
+                                <div>
+                                    <a th:href="${oneNews.link}" th:text="${oneNews.title}" target="_blank"/>
+                                    <div th:utext="${oneNews.description}"/>
+                                    <hr/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="col-md-3">-->
+                    <!--<div class="panel panel-default">-->
+                        <!--<div class="panel-heading">Список покупок</div>-->
+                        <!--<div class="panel-body">-->
+                            <!--<ol>-->
+                                <!--<li><input type="checkbox"/> Молоко</li>-->
+                                <!--<li><input type="checkbox"/> Хлеб</li>-->
+                                <!--<li><input type="checkbox"/> Сыр</li>-->
+                                <!--<li><input type="checkbox"/> Памперсы</li>-->
+                                <!--<li><input type="checkbox"/> Витамины</li>-->
+                            <!--</ol>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+        </div>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+</body>
+</html>
