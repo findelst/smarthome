@@ -1,4 +1,4 @@
 smarthome
 =========
 
-Домашний проект для агрегации полезной информации на домашнем сервере.
+Pet project for aggregation of useful information on the home server.
